@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About — Dreaming in Design</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700;1,900&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --pink: #F9E0FF;
+    --blue: #3622e3;
+    --dark-blue: #1a1aaa;
+    --black: #0a0a0a;
+    --white: #fdfbff;
+    --pink-dark: #f0c8f8;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--pink);
+    color: var(--black);
+    font-family: 'DM Sans', sans-serif;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 48px;
+    background: rgba(249, 224, 255, 0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(50, 50, 232, 0.12);
+  }
+
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 900;
+    color: var(--blue);
+    letter-spacing: -0.01em;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+  }
+
+  .nav-icon {
+    width: 50px;
+    height: auto;
+  }
+
+  .nav-right {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+  }
+
+  .nav-link {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--blue);
+    text-decoration: none;
+    letter-spacing: -0.04em;
+    transition: opacity 0.2s;
+  }
+
+  .nav-link:hover {
+    opacity: 0.7;
+  }
+
+  .nav-cta {
+    background: var(--blue);
+    color: var(--white);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    padding: 10px 24px;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.2s;
+    border-radius: 10px;
+  }
+
+  .nav-cta:hover {
+    background: var(--dark-blue);
+    transform: translateY(-1px);
+  }
+
+  /* ── SECTION 1: WHY + STAT ── */
+  .about-why {
+    padding: 140px 48px 100px;
+    display: grid;
+    grid-template-columns: 45% 55%;
+    gap: 60px;
+    align-items: start;
+  }
+
+  .about-heading {
+    font-family: 'Playfair Display', serif;
+    font-size: 64px;
+    font-weight: 900;
+    font-style: normal;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    color: var(--black);
+    margin-bottom: 32px;
+  }
+
+  .about-heading em {
+    font-style: italic;
+    color: var(--blue);
+  }
+
+  .about-intro {
+    font-size: 22px;
+    font-weight: 600;
+    line-height: 1.27;
+    color: var(--black);
+    margin-bottom: 20px;
+  }
+
+  .about-body p {
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.44;
+    color: var(--black);
+    margin-bottom: 18px;
+  }
+
+  .about-body p:last-child {
+    margin-bottom: 0;
+  }
+
+  .stat-block {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-top: 80px;
+  }
+
+  .stat-giant {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(200px, 22vw, 390px);
+    font-weight: 900;
+    color: var(--blue);
+    line-height: 0.7;
+    letter-spacing: -0.05em;
+    margin-bottom: 60px;
+  }
+
+  .stat-subtext {
+    font-family: 'DM Sans', sans-serif;
+    font-size: clamp(24px, 2.2vw, 38px);
+    font-weight: 500;
+    line-height: 1.0;
+    color: var(--blue);
+    letter-spacing: -0.024em;
+    max-width: 580px;
+    margin-left: calc(20% - 30px);
+  }
+
+  /* ── SECTION 2: PHOTO + ABOUT ME ── */
+  .about-me {
+    padding: 60px 48px 120px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+
+  .photo-container {
+    background: var(--blue);
+    border-radius: 0 24px 24px 24px;
+    overflow: hidden;
+    aspect-ratio: 710 / 489;
+    max-width: 80%;
+  }
+
+  .photo-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .sign-off {
+    font-size: 18px;
+    line-height: 1.44;
+    color: var(--black);
+    margin-top: 18px;
+  }
+
+  .sign-off strong {
+    font-weight: 700;
+  }
+
+  /* ── CTA ── */
+  .cta-section {
+    background: var(--blue);
+    padding: 120px 48px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+
+  .cta-headline {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(40px, 5vw, 72px);
+    font-weight: 900;
+    line-height: 0.95;
+    letter-spacing: -0.03em;
+    color: var(--white);
+  }
+
+  .cta-headline em {
+    font-style: italic;
+    color: var(--pink);
+  }
+
+  .cta-right {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .cta-text {
+    font-size: 17px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.7);
+    line-height: 1.6;
+  }
+
+  .cta-form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .cta-input {
+    padding: 16px 20px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    border: 2px solid rgba(255,255,255,0.3);
+    background: rgba(255,255,255,0.1);
+    color: var(--white);
+    outline: none;
+    transition: border-color 0.2s;
+    border-radius: 12px;
+  }
+
+  .cta-input::placeholder { color: rgba(255,255,255,0.4); }
+  .cta-input:focus { border-color: rgba(255,255,255,0.7); background: rgba(255,255,255,0.15); }
+
+  .cta-btn {
+    background: var(--pink);
+    color: var(--blue);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 18px 32px;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+    align-self: flex-start;
+    border-radius: 12px;
+  }
+
+  .cta-btn:hover {
+    background: #f8d8ec;
+    transform: translateY(-2px);
+  }
+
+  .cta-note {
+    font-size: 12px;
+    color: rgba(255,255,255,0.4);
+  }
+
+  .success-msg {
+    display: none;
+    font-size: 14px;
+    color: var(--pink);
+    font-weight: 500;
+    margin-top: 8px;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--black);
+    padding: 40px 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .footer-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 900;
+    color: var(--white);
+  }
+
+  .footer-note {
+    font-size: 12px;
+    color: rgba(255,255,255,0.3);
+  }
+
+  .footer-credit {
+    font-size: 11px;
+    color: rgba(255,255,255,0.2);
+    letter-spacing: 0.06em;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .about-why {
+      grid-template-columns: 1fr;
+      padding: 120px 24px 60px;
+    }
+
+    .about-heading {
+      font-size: 42px;
+    }
+
+    .stat-block {
+      padding-top: 0;
+    }
+
+    .stat-giant {
+      font-size: 160px;
+    }
+
+    .stat-subtext {
+      font-size: 22px;
+    }
+
+    .about-me {
+      grid-template-columns: 1fr;
+      padding: 40px 24px 80px;
+      gap: 40px;
+    }
+
+    .cta-section {
+      grid-template-columns: 1fr;
+      padding: 80px 24px;
+      gap: 40px;
+    }
+
+    nav {
+      padding: 16px 24px;
+    }
+
+    .nav-right {
+      gap: 16px;
+    }
+
+    .nav-link {
+      font-size: 14px;
+    }
+
+    footer {
+      flex-direction: column;
+      gap: 12px;
+      text-align: center;
+      padding: 32px 24px;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo"><img src="images/Logo-icon.svg" alt="" class="nav-icon" />Dreaming in Design</a>
+  <div class="nav-right">
+    <a href="about.html" class="nav-link">About This App</a>
+    <a href="index.html#waitlist" class="nav-cta">Get Early Access</a>
+  </div>
+</nav>
+
+<!-- SECTION 1: WHY I'M BUILDING THIS + 90% STAT -->
+<section class="about-why">
+  <div class="about-why-left">
+    <h1 class="about-heading">Why I'm <em>building</em> this</h1>
+    <p class="about-intro">The design job market is hard right now. Not impossible — but genuinely hard. Hiring managers are spending about 12 seconds on each portfolio. Roles are competitive. And most designers are getting rejected without ever knowing why. Not because their work isn't good enough. Because no one ever told them what to change.</p>
+    <div class="about-body">
+      <p>That's the problem I kept seeing.</p>
+      <p>According to Figma's 2026 design hiring study, demand for designers is actually on the rise — 47% of hiring managers say their need for designers has increased, and 40% plan to open new headcount in the next six months. Design job postings were up roughly 60% in 2025 compared to 2024. The market is recovering. Opportunities are opening up.</p>
+      <p>But here's the gap: designers aren't hearing that. And even if they were, a recovering market doesn't help if your portfolio isn't ready for it.</p>
+      <p>Most designers have never gotten honest, specific feedback on their portfolio — not from someone who's actually sat in hiring meetings and made decisions. The options are peer feedback that's too kind, blog posts that are too generic, or a $999 video audit that takes a week.</p>
+      <p>I wanted to build something better.</p>
+    </div>
+  </div>
+  <div class="stat-block">
+    <div class="stat-giant">90%</div>
+    <p class="stat-subtext">of designers have never received honest, specific feedback on their portfolio.</p>
+  </div>
+</section>
+
+<!-- SECTION 2: PHOTO + A LITTLE ABOUT ME -->
+<section class="about-me">
+  <div class="photo-container">
+    <img src="images/lance.png" alt="Lance Shields">
+  </div>
+  <div class="about-me-content">
+    <h2 class="about-heading">A little about <em>me</em></h2>
+    <p class="about-intro">I'm Lance Shields. I've spent 20+ years working as a designer and design leader — building products, leading teams, and helping companies figure out where design fits in the bigger picture.</p>
+    <div class="about-body">
+      <p>These days I work as a fractional design leader, which means I step into companies as their head of design — without the full-time commitment. I've reviewed hundreds of portfolios. I've made hiring decisions. I know what actually gets designers to the next round and what quietly disqualifies them before anyone picks up the phone.</p>
+      <p>Dreaming in Design is my attempt to make that knowledge available to more designers — not just the ones who happen to know the right people or can afford expensive coaching.</p>
+      <p>The tool is AI-powered, but it's built on real criteria. The kind of things I actually look for. Specific, level-appropriate, honest feedback — tailored to the role you're going after.</p>
+      <p>The market is coming back. Your portfolio should be ready when it does.</p>
+      <p class="sign-off">— <strong>Lance Shields</strong> · Fractional Design Leader · www.lanceshields.design</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA / WAITLIST -->
+<section class="cta-section" id="waitlist">
+  <h2 class="cta-headline">
+    Be first<br>to get <em>real</em><br>feedback.
+  </h2>
+  <div class="cta-right">
+    <p class="cta-text">
+      We're building this now. Sign up for early access and you'll be first to try it — free — before we launch publicly. Your feedback will shape the tool.
+    </p>
+    <form class="cta-form" onsubmit="handleSignup(event, 'cta')">
+      <input class="cta-input" type="email" placeholder="Your email address" required>
+      <button type="submit" class="cta-btn">Join the Waitlist →</button>
+      <p class="cta-note">Free during early access · No spam · Unsubscribe anytime</p>
+    </form>
+    <div class="success-msg" id="cta-success">You're on the list. We'll be in touch.</div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Dreaming in Design</div>
+  <div class="footer-note">Built for designers, by a designer.</div>
+  <div class="footer-credit">Designed in Figma. Built with Claude Code.</div>
+</footer>
+
+<script>
+  function handleSignup(e, source) {
+    e.preventDefault();
+    const form = e.target;
+    const input = form.querySelector('input');
+    const btn = form.querySelector('button');
+    const email = input.value.trim();
+    if (!email) return;
+
+    btn.textContent = 'Sending...';
+    btn.disabled = true;
+    input.disabled = true;
+
+    fetch('https://formspree.io/f/mkovqwbq', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({ email: email, source: source })
+    })
+    .then(r => r.json())
+    .then(data => {
+      if (data.ok) {
+        btn.textContent = 'You\'re on the list!';
+        btn.style.background = '#c8f0d8';
+        btn.style.color = '#1a6640';
+        input.value = '';
+        document.getElementById('cta-success').style.display = 'block';
+      } else {
+        btn.textContent = 'Try again';
+        btn.disabled = false;
+        input.disabled = false;
+      }
+    })
+    .catch(() => {
+      btn.textContent = 'Try again';
+      btn.disabled = false;
+      input.disabled = false;
+    });
+  }
+</script>
+
+</body>
+</html>
