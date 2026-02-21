@@ -110,6 +110,25 @@
     overflow: hidden;
   }
 
+  .hero-glow {
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255,255,255,0.25) 0%, transparent 70%);
+    pointer-events: none;
+    animation: glowMove 5s ease-in-out forwards;
+    z-index: 1;
+  }
+
+  @keyframes glowMove {
+    0% { top: 10%; left: 5%; opacity: 0.6; }
+    25% { top: 30%; left: 55%; opacity: 0.5; }
+    50% { top: 5%; left: 70%; opacity: 0.4; }
+    75% { top: 40%; left: 25%; opacity: 0.3; }
+    100% { top: 15%; left: 50%; opacity: 0; }
+  }
+
   .hero-bg-number {
     position: absolute;
     top: -40px;
@@ -736,6 +755,7 @@
 
 <!-- HERO -->
 <section class="hero">
+  <div class="hero-glow"></div>
   <div class="slash-divider"></div>
   <img src="images/dreaming.svg" alt="Dreaming in Design logo" class="hero-logo" />
 
