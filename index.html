@@ -683,6 +683,18 @@
     to { opacity: 1; transform: translateY(0); }
   }
 
+  /* ── SCROLL FADE ── */
+  .fade-up {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .fade-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
   /* ── SUCCESS STATE ── */
   .success-msg {
     display: none;
@@ -725,7 +737,7 @@
 </section>
 
 <!-- STAT BAR -->
-<div class="stat-bar">
+<div class="stat-bar fade-up">
   <div class="stat-item">
     <div class="stat-num">90%</div>
     <div class="stat-label">Never got honest feedback</div>
@@ -748,7 +760,7 @@
 </div>
 
 <!-- PROBLEM -->
-<section class="problem">
+<section class="problem fade-up">
   <div class="problem-left">
     <span class="section-label">The Problem</span>
     <h2 class="problem-headline">
@@ -769,7 +781,7 @@
 </section>
 
 <!-- HOW IT WORKS -->
-<section class="how">
+<section class="how fade-up">
   <div class="how-header">
     <h2 class="how-headline">How it <em>works.</em></h2>
     <p class="how-sub">Four steps from portfolio URL to a clear, actionable improvement plan.</p>
@@ -803,7 +815,7 @@
 </section>
 
 <!-- WHAT YOU GET -->
-<section class="output">
+<section class="output fade-up">
   <div class="output-header">
     <span class="section-label">What You Get</span>
     <h2 class="output-headline">Feedback that's <em>specific</em><br>enough to actually act on.</h2>
@@ -861,7 +873,7 @@
 </section>
 
 <!-- CTA / WAITLIST -->
-<section class="cta-section" id="waitlist">
+<section class="cta-section fade-up" id="waitlist">
   <h2 class="cta-headline">
     Be first<br>to get <em>real</em><br>feedback.
   </h2>
@@ -925,6 +937,17 @@
       input.disabled = false;
     });
   }
+
+  // Scroll fade-up observer
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.15 });
+
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 </script>
 
 </body>

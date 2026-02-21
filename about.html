@@ -325,6 +325,18 @@
     letter-spacing: 0.06em;
   }
 
+  /* ── SCROLL FADE ── */
+  .fade-up {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .fade-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
   /* ── RESPONSIVE ── */
   @media (max-width: 900px) {
     .about-why {
@@ -393,7 +405,7 @@
 </nav>
 
 <!-- SECTION 1: WHY I'M BUILDING THIS + 90% STAT -->
-<section class="about-why">
+<section class="about-why fade-up">
   <div class="about-why-left">
     <h1 class="about-heading">Why I'm <em>building</em> this</h1>
     <p class="about-intro">The design job market is hard right now. Not impossible — but genuinely hard. Hiring managers are spending about 12 seconds on each portfolio. Roles are competitive. And most designers are getting rejected without ever knowing why. Not because their work isn't good enough. Because no one ever told them what to change.</p>
@@ -412,7 +424,7 @@
 </section>
 
 <!-- SECTION 2: PHOTO + A LITTLE ABOUT ME -->
-<section class="about-me">
+<section class="about-me fade-up">
   <div class="photo-container">
     <img src="images/lance.png" alt="Lance Shields">
   </div>
@@ -430,7 +442,7 @@
 </section>
 
 <!-- CTA / WAITLIST -->
-<section class="cta-section" id="waitlist">
+<section class="cta-section fade-up" id="waitlist">
   <h2 class="cta-headline">
     Be first<br>to get <em>real</em><br>feedback.
   </h2>
@@ -492,6 +504,17 @@
       input.disabled = false;
     });
   }
+
+  // Scroll fade-up observer
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.15 });
+
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 </script>
 
 </body>
