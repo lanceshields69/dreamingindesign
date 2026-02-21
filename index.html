@@ -814,10 +814,28 @@
     text-decoration: none;
   }
 
-  .mobile-menu .nav-cta {
+  .mobile-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: none;
+    border: none;
+    font-size: 36px;
+    color: var(--blue);
+    cursor: pointer;
+    line-height: 1;
+    padding: 4px 12px;
+  }
+
+  .mobile-cta {
+    background: var(--blue);
+    color: var(--white) !important;
     font-family: 'DM Sans', sans-serif;
     font-size: 16px;
+    font-weight: 500;
     padding: 14px 32px;
+    border-radius: 10px;
+    text-decoration: none;
   }
 
   /* ── MOBILE SLIDER ── */
@@ -968,8 +986,9 @@
   </button>
 </nav>
 <div class="mobile-menu" id="mobile-menu">
+  <button class="mobile-close" id="mobile-close" aria-label="Close menu">&times;</button>
   <a href="about.html">About This App</a>
-  <a href="#waitlist" class="nav-cta" onclick="closeMobileMenu()">Get Early Access</a>
+  <a href="#waitlist" class="mobile-cta" onclick="closeMobileMenu()">Get Early Access</a>
 </div>
 
 <!-- HERO -->
@@ -1212,6 +1231,7 @@
     mobileMenu.classList.remove('open');
     document.body.style.overflow = '';
   }
+  document.getElementById('mobile-close').addEventListener('click', closeMobileMenu);
   mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMobileMenu));
 
   // Scroll fade-up observer
