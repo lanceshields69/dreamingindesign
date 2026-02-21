@@ -128,16 +128,12 @@
     width: 500px;
     height: 450px;
     background: rgba(255,255,255,0.5);
-    top: 15%;
-    left: 10%;
   }
 
   .blob-2 {
     width: 450px;
     height: 500px;
     background: rgba(180,140,230,0.45);
-    top: 30%;
-    right: 15%;
   }
 
   @keyframes glowFadeOut {
@@ -1055,8 +1051,14 @@
     style.textContent = buildKeyframes('blobRand1') + '\n' + buildKeyframes('blobRand2');
     document.head.appendChild(style);
 
-    document.getElementById('blob1').style.animation = 'blobRand1 7s ease-in-out forwards';
-    document.getElementById('blob2').style.animation = 'blobRand2 7s ease-in-out forwards';
+    const b1 = document.getElementById('blob1');
+    const b2 = document.getElementById('blob2');
+    b1.style.top = randInt(5, 60) + '%';
+    b1.style.left = randInt(5, 70) + '%';
+    b2.style.top = randInt(5, 60) + '%';
+    b2.style.left = randInt(5, 70) + '%';
+    b1.style.animation = 'blobRand1 7s ease-in-out forwards';
+    b2.style.animation = 'blobRand2 7s ease-in-out forwards';
   })();
 
 </script>
