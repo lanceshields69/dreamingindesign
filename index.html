@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dreaming in Design — Portfolio Feedback for Designers</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --pink: #F9E0FF;
+    --blue: #3232e8;
+    --dark-blue: #1a1aaa;
+    --black: #0a0a0a;
+    --white: #fdfbff;
+    --pink-dark: #f0c8f8;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--pink);
+    color: var(--black);
+    font-family: 'DM Sans', sans-serif;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 48px;
+    background: rgba(249, 224, 255, 0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(50, 50, 232, 0.12);
+  }
+
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 900;
+    color: var(--blue);
+    letter-spacing: -0.01em;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .nav-icon {
+    width: 50px;
+    height: auto;
+  }
+
+  .nav-cta {
+    background: var(--blue);
+    color: var(--white);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    padding: 10px 24px;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.2s;
+    border-radius: 10px;
+  }
+
+  .nav-cta:hover {
+    background: var(--dark-blue);
+    transform: translateY(-1px);
+  }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 0 48px 80px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-bg-number {
+    position: absolute;
+    top: -40px;
+    right: -60px;
+    font-family: 'Playfair Display', serif;
+    font-size: 560px;
+    font-weight: 900;
+    color: rgba(50, 50, 232, 0.08);
+    line-height: 1;
+    user-select: none;
+    pointer-events: none;
+  }
+
+  .hero-eyebrow {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--blue);
+    margin-bottom: 32px;
+    opacity: 0;
+    animation: fadeUp 0.6s ease forwards 0.2s;
+  }
+
+  .hero-headline {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(56px, 8vw, 112px);
+    font-weight: 900;
+    line-height: 0.92;
+    letter-spacing: -0.03em;
+    color: var(--black);
+    max-width: 900px;
+    margin-bottom: 40px;
+    opacity: 0;
+    animation: fadeUp 0.7s ease forwards 0.35s;
+  }
+
+  .hero-headline em {
+    font-style: italic;
+    color: var(--blue);
+  }
+
+  .hero-sub {
+    font-size: 18px;
+    font-weight: 300;
+    line-height: 1.6;
+    color: rgba(10,10,10,0.7);
+    max-width: 520px;
+    margin-bottom: 48px;
+    opacity: 0;
+    animation: fadeUp 0.7s ease forwards 0.5s;
+  }
+
+  .hero-form {
+    display: flex;
+    gap: 0;
+    max-width: 480px;
+    opacity: 0;
+    animation: fadeUp 0.7s ease forwards 0.65s;
+  }
+
+  .hero-input {
+    flex: 1;
+    padding: 16px 20px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 400;
+    border: 2px solid var(--blue);
+    border-right: none;
+    border-radius: 12px 0 0 12px;
+    background: rgba(255,255,255,0.6);
+    color: var(--black);
+    outline: none;
+  }
+
+  .hero-input::placeholder { color: rgba(10,10,10,0.4); }
+  .hero-input:focus { background: rgba(255,255,255,0.9); }
+
+  .hero-btn {
+    background: var(--blue);
+    color: var(--white);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    padding: 16px 28px;
+    border: 2px solid var(--blue);
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background 0.2s;
+    border-radius: 0 12px 12px 0;
+  }
+
+  .hero-btn:hover { background: var(--dark-blue); border-color: var(--dark-blue); }
+
+  .hero-note {
+    margin-top: 14px;
+    font-size: 12px;
+    color: rgba(10,10,10,0.45);
+    letter-spacing: 0.02em;
+    opacity: 0;
+    animation: fadeUp 0.7s ease forwards 0.8s;
+  }
+
+  .hero-logo {
+    position: absolute;
+    bottom: 80px;
+    right: 80px;
+    width: 300px;
+    height: 300px;
+  }
+
+  @media (max-width: 768px) {
+    .hero-logo {
+      position: relative;
+      bottom: auto;
+      right: auto;
+      width: 200px;
+      height: 200px;
+      margin-top: 40px;
+    }
+  }
+
+  /* diagonal slash divider */
+  .slash-divider {
+    position: absolute;
+    top: 80px;
+    right: 120px;
+    width: 1px;
+    height: 300px;
+    background: rgba(50,50,232,0.2);
+    transform: rotate(20deg);
+    transform-origin: top;
+  }
+
+  /* ── STAT BAR ── */
+  .stat-bar {
+    background: var(--blue);
+    padding: 32px 48px;
+    display: flex;
+    gap: 80px;
+    align-items: center;
+  }
+
+  .stat-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 42px;
+    font-weight: 900;
+    color: var(--white);
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+
+  .stat-label {
+    font-size: 12px;
+    font-weight: 400;
+    color: rgba(255,255,255,0.6);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .stat-divider {
+    width: 1px;
+    height: 48px;
+    background: rgba(255,255,255,0.2);
+  }
+
+  /* ── PROBLEM ── */
+  .problem {
+    padding: 120px 48px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+    background: var(--pink);
+  }
+
+  .section-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--blue);
+    margin-bottom: 24px;
+    display: block;
+  }
+
+  .problem-headline {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(36px, 4vw, 54px);
+    font-weight: 900;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    color: var(--black);
+  }
+
+  .problem-headline em {
+    font-style: italic;
+    color: var(--blue);
+  }
+
+  .problem-body {
+    padding-top: 48px;
+  }
+
+  .problem-graf {
+    font-size: 17px;
+    font-weight: 300;
+    line-height: 1.7;
+    color: rgba(10,10,10,0.75);
+    margin-bottom: 24px;
+  }
+
+  .problem-graf strong {
+    font-weight: 500;
+    color: var(--black);
+  }
+
+  /* ── HOW IT WORKS ── */
+  .how {
+    background: var(--black);
+    padding: 120px 48px;
+  }
+
+  .how-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 80px;
+  }
+
+  .how-headline {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(36px, 4vw, 54px);
+    font-weight: 900;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    color: var(--white);
+    max-width: 400px;
+  }
+
+  .how-headline em {
+    font-style: italic;
+    color: var(--pink);
+  }
+
+  .how-sub {
+    font-size: 15px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.5);
+    max-width: 300px;
+    line-height: 1.6;
+    text-align: right;
+  }
+
+  .steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2px;
+  }
+
+  .step {
+    background: rgba(255,255,255,0.04);
+    padding: 40px 32px;
+    position: relative;
+    transition: background 0.2s;
+    border-radius: 16px;
+  }
+
+  .step:hover { background: rgba(255,255,255,0.07); }
+
+  .step-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 72px;
+    font-weight: 900;
+    color: rgba(240, 200, 224, 0.15);
+    line-height: 1;
+    margin-bottom: 24px;
+    letter-spacing: -0.04em;
+  }
+
+  .step-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 12px;
+    line-height: 1.2;
+  }
+
+  .step-desc {
+    font-size: 14px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.5);
+    line-height: 1.65;
+  }
+
+  .step-accent {
+    position: absolute;
+    top: 0; left: 0;
+    width: 32px;
+    height: 2px;
+    background: var(--pink);
+  }
+
+  /* ── WHAT YOU GET ── */
+  .output {
+    padding: 120px 48px;
+    background: var(--pink);
+  }
+
+  .output-header {
+    margin-bottom: 64px;
+  }
+
+  .output-headline {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(36px, 4vw, 54px);
+    font-weight: 900;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    color: var(--black);
+    max-width: 600px;
+  }
+
+  .output-headline em {
+    font-style: italic;
+    color: var(--blue);
+  }
+
+  .dimensions {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 2px;
+    margin-bottom: 64px;
+  }
+
+  .dimension {
+    background: rgba(50,50,232,0.06);
+    padding: 32px 24px;
+    border-top: 2px solid var(--blue);
+    transition: background 0.2s;
+    border-radius: 16px;
+  }
+
+  .dimension:hover { background: rgba(50,50,232,0.1); }
+
+  .dim-score {
+    font-family: 'Playfair Display', serif;
+    font-size: 48px;
+    font-weight: 900;
+    color: var(--blue);
+    line-height: 1;
+    margin-bottom: 8px;
+    letter-spacing: -0.03em;
+  }
+
+  .dim-label {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--black);
+    margin-bottom: 8px;
+  }
+
+  .dim-bar-track {
+    height: 3px;
+    background: rgba(50,50,232,0.15);
+    margin-bottom: 12px;
+  }
+
+  .dim-bar-fill {
+    height: 100%;
+    background: var(--blue);
+  }
+
+  .dim-note {
+    font-size: 12px;
+    font-weight: 300;
+    color: rgba(10,10,10,0.55);
+    line-height: 1.5;
+  }
+
+  /* sample feedback card */
+  .sample-card {
+    background: var(--white);
+    border: 1px solid rgba(50,50,232,0.15);
+    padding: 40px 48px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    border-radius: 20px;
+  }
+
+  .sample-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--blue);
+    margin-bottom: 16px;
+  }
+
+  .sample-headline {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--black);
+    margin-bottom: 16px;
+    line-height: 1.3;
+  }
+
+  .sample-text {
+    font-size: 14px;
+    font-weight: 300;
+    color: rgba(10,10,10,0.65);
+    line-height: 1.7;
+  }
+
+  .sample-fixes {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .sample-fix {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    font-size: 14px;
+    font-weight: 300;
+    color: rgba(10,10,10,0.7);
+    line-height: 1.5;
+  }
+
+  .fix-bullet {
+    width: 20px;
+    height: 20px;
+    background: var(--blue);
+    color: var(--white);
+    font-size: 10px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 2px;
+    border-radius: 50%;
+  }
+
+  /* ── CTA ── */
+  .cta-section {
+    background: var(--blue);
+    padding: 120px 48px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+
+  .cta-headline {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(40px, 5vw, 72px);
+    font-weight: 900;
+    line-height: 0.95;
+    letter-spacing: -0.03em;
+    color: var(--white);
+  }
+
+  .cta-headline em {
+    font-style: italic;
+    color: var(--pink);
+  }
+
+  .cta-right {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .cta-text {
+    font-size: 17px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.7);
+    line-height: 1.6;
+  }
+
+  .cta-form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .cta-input {
+    padding: 16px 20px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    border: 2px solid rgba(255,255,255,0.3);
+    background: rgba(255,255,255,0.1);
+    color: var(--white);
+    outline: none;
+    transition: border-color 0.2s;
+    border-radius: 12px;
+  }
+
+  .cta-input::placeholder { color: rgba(255,255,255,0.4); }
+  .cta-input:focus { border-color: rgba(255,255,255,0.7); background: rgba(255,255,255,0.15); }
+
+  .cta-btn {
+    background: var(--pink);
+    color: var(--blue);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 18px 32px;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+    align-self: flex-start;
+    border-radius: 12px;
+  }
+
+  .cta-btn:hover {
+    background: #f8d8ec;
+    transform: translateY(-2px);
+  }
+
+  .cta-note {
+    font-size: 12px;
+    color: rgba(255,255,255,0.4);
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--black);
+    padding: 40px 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .footer-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 900;
+    color: var(--white);
+  }
+
+  .footer-note {
+    font-size: 12px;
+    color: rgba(255,255,255,0.3);
+  }
+
+  .footer-credit {
+    font-size: 11px;
+    color: rgba(255,255,255,0.2);
+    letter-spacing: 0.06em;
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── SUCCESS STATE ── */
+  .success-msg {
+    display: none;
+    font-size: 14px;
+    color: var(--blue);
+    font-weight: 500;
+    margin-top: 8px;
+  }
+
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo"><img src="images/Logo-icon.svg" alt="" class="nav-icon" />Dreaming in Design</div>
+  <a href="#waitlist" class="nav-cta">Get Early Access</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="slash-divider"></div>
+  <img src="images/dreaming.svg" alt="Dreaming in Design logo" class="hero-logo" />
+
+  <div class="hero-eyebrow">Portfolio Feedback for Designers</div>
+  <h1 class="hero-headline">
+    Your portfolio<br>deserves <em>honest</em><br>feedback.
+  </h1>
+  <p class="hero-sub">
+    An AI-powered portfolio reviewer trained on real hiring criteria — specific to your role, level, and the companies you want to work at. No generic tips. No $999 audits. Just signal.
+  </p>
+  <form class="hero-form" onsubmit="handleSignup(event, 'hero')">
+    <input class="hero-input" type="email" placeholder="Your email address" required>
+    <button type="submit" class="hero-btn">Get Early Access →</button>
+  </form>
+  <p class="hero-note">Free during early access · No spam · Unsubscribe anytime</p>
+</section>
+
+<!-- STAT BAR -->
+<div class="stat-bar">
+  <div class="stat-item">
+    <div class="stat-num">90%</div>
+    <div class="stat-label">Never got honest feedback</div>
+  </div>
+  <div class="stat-divider"></div>
+  <div class="stat-item">
+    <div class="stat-num">12s</div>
+    <div class="stat-label">Hiring manager attention span</div>
+  </div>
+  <div class="stat-divider"></div>
+  <div class="stat-item">
+    <div class="stat-num">83 days</div>
+    <div class="stat-label">Average design job search</div>
+  </div>
+  <div class="stat-divider"></div>
+  <div class="stat-item">
+    <div class="stat-num">$999</div>
+    <div class="stat-label">What a portfolio audit costs today</div>
+  </div>
+</div>
+
+<!-- PROBLEM -->
+<section class="problem">
+  <div class="problem-left">
+    <span class="section-label">The Problem</span>
+    <h2 class="problem-headline">
+      Talented designers<br>are getting passed<br>over for reasons<br>they'll <em>never know.</em>
+    </h2>
+  </div>
+  <div class="problem-body">
+    <p class="problem-graf">
+      The design job market is brutally competitive right now. Hundreds of applicants per role. Hiring managers spending 12 seconds per portfolio. And most designers have <strong>no idea what's actually working against them.</strong>
+    </p>
+    <p class="problem-graf">
+      Peer feedback is too kind. Blog posts are too generic. Professional portfolio audits cost $999 and take a week. And recruiters never explain why they passed.
+    </p>
+    <p class="problem-graf">
+      The result: designers keep applying, keep getting rejected, and keep making the same mistakes — because <strong>no one ever told them what to fix.</strong>
+    </p>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how">
+  <div class="how-header">
+    <h2 class="how-headline">How it <em>works.</em></h2>
+    <p class="how-sub">Four steps from portfolio URL to a clear, actionable improvement plan.</p>
+  </div>
+  <div class="steps">
+    <div class="step">
+      <div class="step-accent"></div>
+      <div class="step-num">01</div>
+      <div class="step-title">Tell us about yourself</div>
+      <p class="step-desc">Role type, experience level, and the kind of company you're targeting. This context changes everything about what makes a great portfolio.</p>
+    </div>
+    <div class="step">
+      <div class="step-accent"></div>
+      <div class="step-num">02</div>
+      <div class="step-title">Submit your portfolio</div>
+      <p class="step-desc">Paste your URL, upload a PDF, or connect Behance or Dribbble. Password-protected? No problem — we've got you covered.</p>
+    </div>
+    <div class="step">
+      <div class="step-accent"></div>
+      <div class="step-num">03</div>
+      <div class="step-title">AI analyzes your work</div>
+      <p class="step-desc">Trained on real design leadership hiring criteria, the tool reads your portfolio the way a hiring manager actually does — fast, critical, and looking for specific signals.</p>
+    </div>
+    <div class="step">
+      <div class="step-accent"></div>
+      <div class="step-num">04</div>
+      <div class="step-title">Get your report</div>
+      <p class="step-desc">Scored across 5 dimensions with specific, actionable callouts. Not "improve your case studies" — but exactly what to change and why.</p>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT YOU GET -->
+<section class="output">
+  <div class="output-header">
+    <span class="section-label">What You Get</span>
+    <h2 class="output-headline">Feedback that's <em>specific</em><br>enough to actually act on.</h2>
+  </div>
+
+  <div class="dimensions">
+    <div class="dimension">
+      <div class="dim-score">7.2</div>
+      <div class="dim-label">First Impression</div>
+      <div class="dim-bar-track"><div class="dim-bar-fill" style="width:72%"></div></div>
+      <div class="dim-note">Your homepage communicates your role but loses attention before the first case study.</div>
+    </div>
+    <div class="dimension">
+      <div class="dim-score">5.8</div>
+      <div class="dim-label">Case Study Quality</div>
+      <div class="dim-bar-track"><div class="dim-bar-fill" style="width:58%"></div></div>
+      <div class="dim-note">Strong process documentation — weak on outcomes and business impact.</div>
+    </div>
+    <div class="dimension">
+      <div class="dim-score">8.1</div>
+      <div class="dim-label">Storytelling</div>
+      <div class="dim-bar-track"><div class="dim-bar-fill" style="width:81%"></div></div>
+      <div class="dim-note">Clear narrative arc. Your writing voice is confident and readable.</div>
+    </div>
+    <div class="dimension">
+      <div class="dim-score">4.9</div>
+      <div class="dim-label">Differentiation</div>
+      <div class="dim-bar-track"><div class="dim-bar-fill" style="width:49%"></div></div>
+      <div class="dim-note">Looks like many other mid-level portfolios. Your POV isn't visible yet.</div>
+    </div>
+    <div class="dimension">
+      <div class="dim-score">7.5</div>
+      <div class="dim-label">Role Readiness</div>
+      <div class="dim-bar-track"><div class="dim-bar-fill" style="width:75%"></div></div>
+      <div class="dim-note">Positions well for mid-level. Senior roles would want more leadership signal.</div>
+    </div>
+  </div>
+
+  <div class="sample-card">
+    <div>
+      <div class="sample-label">Biggest Opportunity</div>
+      <div class="sample-headline">Your Fintech case study buries the most important decision on page 3.</div>
+      <p class="sample-text">Hiring managers at growth-stage companies aren't reading your whole case study. They're scanning for the moment where you made a hard call. Right now that moment is hidden behind two pages of research documentation that most won't reach.</p>
+    </div>
+    <div>
+      <div class="sample-label">Quick Wins — Fix This Week</div>
+      <ul class="sample-fixes">
+        <li class="sample-fix"><div class="fix-bullet">1</div>Move your key design decision to the top of the case study — make it the lead, not the payoff.</li>
+        <li class="sample-fix"><div class="fix-bullet">2</div>Add one sentence of outcome data to each project thumbnail on your homepage.</li>
+        <li class="sample-fix"><div class="fix-bullet">3</div>Your "About" page doesn't say what kind of role you're looking for. Add a single clear line.</li>
+        <li class="sample-fix"><div class="fix-bullet">4</div>Remove the student project from 2021 — it's lowering the overall signal of your work.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- CTA / WAITLIST -->
+<section class="cta-section" id="waitlist">
+  <h2 class="cta-headline">
+    Be first<br>to get <em>real</em><br>feedback.
+  </h2>
+  <div class="cta-right">
+    <p class="cta-text">
+      We're building this now. Sign up for early access and you'll be first to try it — free — before we launch publicly. Your feedback will shape the tool.
+    </p>
+    <form class="cta-form" onsubmit="handleSignup(event, 'cta')">
+      <input class="cta-input" type="email" placeholder="Your email address" required>
+      <button type="submit" class="cta-btn">Join the Waitlist →</button>
+      <p class="cta-note">Free during early access · No spam · Unsubscribe anytime</p>
+    </form>
+    <div class="success-msg" id="cta-success">✓ You're on the list. We'll be in touch.</div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Dreaming in Design</div>
+  <div class="footer-note">Built for designers, by a designer.</div>
+  <div class="footer-credit">Designed in Figma. Built with Claude Code.</div>
+</footer>
+
+<script>
+  function handleSignup(e, source) {
+    e.preventDefault();
+    const form = e.target;
+    const input = form.querySelector('input');
+    const btn = form.querySelector('button');
+    const email = input.value.trim();
+    if (!email) return;
+
+    btn.textContent = 'Sending...';
+    btn.disabled = true;
+    input.disabled = true;
+
+    fetch('https://formspree.io/f/mkovqwbq', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({ email: email, source: source })
+    })
+    .then(r => r.json())
+    .then(data => {
+      if (data.ok) {
+        btn.textContent = '✓ You\'re on the list!';
+        btn.style.background = '#c8f0d8';
+        btn.style.color = '#1a6640';
+        input.value = '';
+        if (source === 'cta') {
+          document.getElementById('cta-success').style.display = 'block';
+        }
+      } else {
+        btn.textContent = 'Try again';
+        btn.disabled = false;
+        input.disabled = false;
+      }
+    })
+    .catch(() => {
+      btn.textContent = 'Try again';
+      btn.disabled = false;
+      input.disabled = false;
+    });
+  }
+</script>
+
+</body>
+</html>
