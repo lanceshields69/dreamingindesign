@@ -250,7 +250,7 @@
   /* ── STAT BAR ── */
   .stat-bar {
     background: var(--blue);
-    padding: 32px 48px;
+    padding: 47px 48px;
     display: flex;
     gap: 80px;
     align-items: center;
@@ -287,7 +287,7 @@
 
   /* ── PROBLEM ── */
   .problem {
-    padding: 120px 48px;
+    padding: 170px 48px;
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 80px;
@@ -334,6 +334,20 @@
   .problem-graf strong {
     font-weight: 500;
     color: var(--black);
+  }
+
+  .about-link {
+    display: inline-block;
+    margin-top: 24px;
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--blue);
+    text-decoration: none;
+    transition: opacity 0.2s;
+  }
+
+  .about-link:hover {
+    opacity: 0.7;
   }
 
   /* ── HOW IT WORKS ── */
@@ -780,6 +794,7 @@
     <p class="problem-graf">
       The result: designers keep applying, keep getting rejected, and keep making the same mistakes — because <strong>no one ever told them what to fix.</strong>
     </p>
+    <a href="/about" class="about-link">Why I'm building this app →</a>
   </div>
 </section>
 
