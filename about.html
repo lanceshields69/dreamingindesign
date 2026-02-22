@@ -178,6 +178,82 @@
     letter-spacing: -0.024em;
     max-width: 580px;
     margin-left: calc(20% - 30px);
+    margin-bottom: 80px;
+  }
+
+  /* ── ARTICLE CARD ── */
+  .article-card-container {
+    position: relative;
+    width: 100%;
+    max-width: 715px;
+  }
+
+  .article-card-shadow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 278px;
+    background: var(--blue);
+    border-radius: 20px;
+  }
+
+  .article-card {
+    position: relative;
+    top: 4px;
+    background: #e4ccff;
+    border-radius: 20px;
+    height: 277px;
+    display: flex;
+    overflow: hidden;
+  }
+
+  .article-illustration {
+    flex-shrink: 0;
+    width: 326px;
+    height: 278px;
+    margin-left: -27px;
+  }
+
+  .article-illustration img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .article-content {
+    padding: 24px 24px 24px 3px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    flex: 1;
+  }
+
+  .article-heading {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    font-weight: 900;
+    color: var(--black);
+    line-height: 1.2;
+  }
+
+  .article-text {
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.44;
+    color: var(--black);
+  }
+
+  .article-link {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--blue);
+    text-decoration: none;
+    transition: opacity 0.2s;
+  }
+
+  .article-link:hover {
+    opacity: 0.7;
   }
 
   /* ── SECTION 2: PHOTO + ABOUT ME ── */
@@ -472,6 +548,29 @@
       max-width: 100%;
     }
 
+    .article-card {
+      flex-direction: column;
+      height: auto;
+    }
+
+    .article-illustration {
+      width: 100%;
+      height: 200px;
+      margin-left: 0;
+    }
+
+    .article-content {
+      padding: 20px;
+    }
+
+    .article-heading {
+      font-size: 24px;
+    }
+
+    .article-text {
+      font-size: 16px;
+    }
+
     .cta-section {
       grid-template-columns: 1fr;
       padding: 80px 24px;
@@ -538,6 +637,19 @@
   <div class="stat-block">
     <div class="stat-giant">90%</div>
     <p class="stat-subtext">of designers have never received honest, specific feedback on their portfolio.</p>
+    <div class="article-card-container">
+      <div class="article-card-shadow"></div>
+      <div class="article-card">
+        <div class="article-illustration">
+          <img src="images/blog-illustration.png" alt="">
+        </div>
+        <div class="article-content">
+          <h3 class="article-heading">In my blog</h3>
+          <p class="article-text">The market is coming back. Most designers don't know it — and even if they did, their portfolio still isn't ready. Here's what the research showed me, and why I decided to build something about it.</p>
+          <a href="https://www.lanceshields.design/blog/the-design-job-market-is-coming-back-your-portfolio-isnt-ready" target="_blank" class="article-link">Read my post →</a>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
