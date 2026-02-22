@@ -114,7 +114,7 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    padding: 0 48px 80px;
+    padding: 0 48px 30px;
     position: relative;
     overflow: hidden;
   }
@@ -164,8 +164,12 @@
     pointer-events: none;
   }
 
+  .hero-content {
+    transform: translateY(-70px);
+  }
+
   .hero-eyebrow {
-    font-size: 14px;
+    font-size: 16px;
     font-weight: 500;
     letter-spacing: 0.22em;
     text-transform: uppercase;
@@ -177,10 +181,10 @@
 
   .hero-headline {
     font-family: 'Playfair Display', serif;
-    font-size: clamp(56px, 8vw, 112px);
+    font-size: 100px;
     font-weight: 900;
-    line-height: 0.92;
-    letter-spacing: -0.03em;
+    line-height: 1.01;
+    letter-spacing: -0.04em;
     color: var(--black);
     max-width: 900px;
     margin-bottom: 40px;
@@ -255,12 +259,12 @@
     animation: fadeUp 0.7s ease forwards 0.8s;
   }
 
-  .hero-logo {
+  .hero-illustration {
     position: absolute;
-    bottom: 80px;
-    right: 80px;
-    width: 375px;
-    height: 375px;
+    top: 267px;
+    right: 0;
+    width: 789px;
+    height: 591px;
     opacity: 0;
     animation: fadeUp 0.7s ease forwards 0.2s;
   }
@@ -885,15 +889,20 @@
       min-height: auto;
       padding-top: 100px;
     }
-    .hero-logo {
+    .hero-illustration {
       position: relative;
-      bottom: auto;
+      top: auto;
       right: auto;
-      width: 120px;
-      height: 120px;
+      width: 100%;
+      height: auto;
+      max-width: 400px;
       margin-bottom: 24px;
     }
-    .hero-headline { font-size: 42px; margin-bottom: 24px; }
+    .hero-headline {
+      font-size: 42px;
+      margin-bottom: 24px;
+      line-height: 1.1;
+    }
     .hero-sub { font-size: 16px; margin-bottom: 32px; }
     .hero-form { flex-direction: column; gap: 12px; }
     .hero-input { border: 2px solid var(--blue); border-radius: 12px; }
@@ -1026,19 +1035,21 @@
     <div class="blob blob-2" id="blob2"></div>
   </div>
   <div class="slash-divider"></div>
-  <img src="images/dreaming.svg" alt="Dreaming in Design logo" class="hero-logo" />
+  <img src="images/hero-illustration.png" alt="Designer dreaming about portfolio feedback" class="hero-illustration" />
 
-  <div class="hero-eyebrow">Portfolio Feedback for Designers</div>
-  <h1 class="hero-headline">
-    Your portfolio<br>deserves <em>honest</em><br>feedback.
-  </h1>
-  <p class="hero-sub">
-    An AI-powered portfolio reviewer trained on real hiring criteria — specific to your role, level, and the companies you want to work at. No generic tips. No $999 audits. Just signal.
-  </p>
-  <form class="hero-form" onsubmit="handleSignup(event, 'hero')">
-    <input class="hero-input" type="email" placeholder="Your email address" required>
-    <button type="submit" class="hero-btn">Get Early Access →</button>
-  </form>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Portfolio Feedback for Designers</div>
+    <h1 class="hero-headline">
+      Designers <em>deserve</em><br>to know how good<br>they actually are.
+    </h1>
+    <p class="hero-sub">
+      An AI-powered portfolio reviewer trained on real hiring criteria — specific to your role, level, and the companies you want to work at. No generic tips. No $999 audits. Just signal.
+    </p>
+    <form class="hero-form" onsubmit="handleSignup(event, 'hero')">
+      <input class="hero-input" type="email" placeholder="Your email address" required>
+      <button type="submit" class="hero-btn">Get Early Access →</button>
+    </form>
+  </div>
 </section>
 
 <!-- STAT BAR -->
