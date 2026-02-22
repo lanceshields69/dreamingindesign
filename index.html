@@ -889,6 +889,11 @@
       min-height: auto;
       padding-top: 100px;
     }
+    .hero-content {
+      transform: none;
+      display: flex;
+      flex-direction: column;
+    }
     .hero-illustration {
       position: relative;
       top: auto;
@@ -897,11 +902,25 @@
       height: auto;
       max-width: 400px;
       margin-bottom: 24px;
+      order: 1;
+    }
+    .hero-eyebrow {
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      margin-bottom: 20px;
+      order: 2;
     }
     .hero-headline {
       font-size: 42px;
       margin-bottom: 24px;
       line-height: 1.1;
+      order: 3;
+    }
+    .hero-sub {
+      order: 4;
+    }
+    .hero-form {
+      order: 5;
     }
     .hero-sub { font-size: 16px; margin-bottom: 32px; }
     .hero-form { flex-direction: column; gap: 12px; }
