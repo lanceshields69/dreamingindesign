@@ -888,11 +888,12 @@
       padding: 0 20px 60px;
       min-height: auto;
       padding-top: 100px;
+      display: flex;
+      flex-direction: column;
     }
     .hero-content {
       transform: none;
-      display: flex;
-      flex-direction: column;
+      order: 2;
     }
     .hero-illustration {
       position: relative;
@@ -908,19 +909,11 @@
       font-size: 11px;
       letter-spacing: 0.18em;
       margin-bottom: 20px;
-      order: 2;
     }
     .hero-headline {
       font-size: 42px;
       margin-bottom: 24px;
       line-height: 1.1;
-      order: 3;
-    }
-    .hero-sub {
-      order: 4;
-    }
-    .hero-form {
-      order: 5;
     }
     .hero-sub { font-size: 16px; margin-bottom: 32px; }
     .hero-form { flex-direction: column; gap: 12px; }
@@ -1054,9 +1047,9 @@
     <div class="blob blob-2" id="blob2"></div>
   </div>
   <div class="slash-divider"></div>
+  <img src="images/dreaming-in-design-illustration.jpg" alt="Designer dreaming about portfolio feedback" class="hero-illustration" />
 
   <div class="hero-content">
-    <img src="images/dreaming-in-design-illustration.jpg" alt="Designer dreaming about portfolio feedback" class="hero-illustration" />
     <div class="hero-eyebrow">Portfolio Feedback for Designers</div>
     <h1 class="hero-headline">
       Designers <em>deserve</em><br>to know how good<br>they actually are.
