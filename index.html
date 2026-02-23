@@ -133,7 +133,6 @@
     pointer-events: none;
     z-index: 0;
     filter: blur(80px);
-    animation: glowFadeOut 7s ease-in-out forwards;
   }
 
   .hero-glow .blob {
@@ -151,12 +150,6 @@
     width: 565px;
     height: 625px;
     background: rgba(200,150,240,0.5);
-  }
-
-  @keyframes glowFadeOut {
-    0% { opacity: 1; }
-    75% { opacity: 0.8; }
-    100% { opacity: 0; }
   }
 
   .hero-bg-number {
@@ -1304,12 +1297,14 @@
 
   document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 
-  // Random blob animations
+  // Random blob animations — continuous loop
   (function() {
     function randInt(min, max) { return Math.floor(Math.random() * (max - min + 1)) + min; }
     function randRadius() {
       return `${randInt(30,65)}% ${randInt(35,70)}% ${randInt(30,65)}% ${randInt(35,70)}%`;
     }
+
+    let animCount = 0;
 
     function buildKeyframes(name) {
       let frames = `@keyframes ${name} {\n`;
@@ -1318,16 +1313,27 @@
         const x = pct === 0 || pct === 100 ? 0 : randInt(-350, 350);
         const y = pct === 0 || pct === 100 ? 0 : randInt(-280, 280);
         const s = pct === 0 || pct === 100 ? 1 : (0.7 + Math.random() * 0.8).toFixed(2);
-        const r = pct === 100 ? '50% 50% 50% 50%' : randRadius();
+        const r = randRadius();
         frames += `  ${pct}% { transform: translate(${x}px, ${y}px) scale(${s}); border-radius: ${r}; }\n`;
       });
       frames += '}';
       return frames;
     }
 
-    const style = document.createElement('style');
-    style.textContent = buildKeyframes('blobRand1') + '\n' + buildKeyframes('blobRand2');
-    document.head.appendChild(style);
+    function loopBlob(blob, prevStyle) {
+      if (prevStyle) prevStyle.remove();
+      animCount++;
+      const name = 'blobAnim_' + blob.id + '_' + animCount;
+      const styleEl = document.createElement('style');
+      styleEl.textContent = buildKeyframes(name);
+      document.head.appendChild(styleEl);
+      blob.style.animation = 'none';
+      blob.offsetHeight; // force reflow
+      blob.style.animation = name + ' 7s ease-in-out forwards';
+      blob.addEventListener('animationend', function() {
+        loopBlob(blob, styleEl);
+      }, { once: true });
+    }
 
     const b1 = document.getElementById('blob1');
     const b2 = document.getElementById('blob2');
@@ -1335,8 +1341,8 @@
     b1.style.left = randInt(5, 70) + '%';
     b2.style.top = randInt(5, 60) + '%';
     b2.style.left = randInt(5, 70) + '%';
-    b1.style.animation = 'blobRand1 7s ease-in-out forwards';
-    b2.style.animation = 'blobRand2 7s ease-in-out forwards';
+    loopBlob(b1, null);
+    loopBlob(b2, null);
   })();
 
 </script>
