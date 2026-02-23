@@ -763,13 +763,13 @@
     background-size: 60px 60px;
     mask-image: radial-gradient(ellipse 70% 60% at 50% 50%, black 20%, transparent 70%);
     -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 50%, black 20%, transparent 70%);
-    animation: gridFade 5s ease-in-out forwards;
+    animation: gridPulse 6s ease-in-out infinite;
   }
 
-  @keyframes gridFade {
-    0% { opacity: 0; }
-    15% { opacity: 1; }
-    70% { opacity: 0.8; }
+  @keyframes gridPulse {
+    0%   { opacity: 0; }
+    40%  { opacity: 0.9; }
+    60%  { opacity: 0.9; }
     100% { opacity: 0; }
   }
 
