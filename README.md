@@ -1,0 +1,1 @@
+Dreaming in Design is an AI-powered portfolio reviewer trained on real hiring criteria. The tool I'm building will use AI because it's the only way to deliver personalized feedback at scale — specific to your role, level, and target companies.
